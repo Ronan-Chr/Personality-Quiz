@@ -39,4 +39,38 @@ questionBlocks.forEach(function(block, index) {
   });
 });
 
+// This function will calculate and display the final result
+function displayResult() {
 
+// Select the result text and result container
+  let resultText = document.getElementById("result-text");
+  let resultContainer = document.getElementById("result-container");
+
+// Create a variable to store the total score
+  let totalScore = 0;
+
+// Loop through the stored answers and add them together
+  for (let key in userAnswers) {
+    totalScore = totalScore + userAnswers[key];
+  }
+
+// Determine the final role based on the total score
+  if (totalScore <= 8) {
+    resultText.textContent = "Your avoident yet effective making you the Rogue.";
+} else if (totalScore <= 12) {
+    resultText.textContent = "Disciplined and patient, your a Ranger without a doubt.";
+} else if (totalScore <= 16) {
+    resultText.textContent = "Your the one heading the charge controlling the flow the Warrior.";
+} else {
+    resultText.textContent = "Your wise and determined for a goal fitting of a Mage.";
+}
+
+// Show the result container after the result is calculated
+  resultContainer.style.display = "block";
+}
+
+// This selects the show result button
+let resultButton = document.getElementById("show-result");
+
+// This listens for when the show result button is clicked
+resultButton.addEventListener("click", displayResult);
